@@ -1,0 +1,9 @@
+{
+  "module": {
+    "name": "sensors",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+    ]
+  }
+}

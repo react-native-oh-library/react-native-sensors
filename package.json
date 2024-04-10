@@ -1,5 +1,5 @@
 {
-  "name": "react-native-sensors",
+  "name": "@react-native-oh-library/react-native-sensors",
   "version": "7.2.1-rc.2",
   "description": "A developer friendly approach for sensors in react-native",
   "scripts": {
@@ -17,7 +17,8 @@
   "repository": "git@github.com:react-native-sensors/react-native-sensors.git",
   "homepage": "https://github.com/react-native-sensors/react-native-sensors",
   "keywords": [
-    "react-native"
+    "react-native",
+    "harmony"
   ],
   "author": {
     "name": "Daniel Schmidt",
@@ -48,11 +49,6 @@
     ]
   },
   "license": "MIT",
-  "peerDependencies": {
-    "prop-types": "^15.6.0",
-    "react-native": ">=0.39.0",
-    "react-native-windows": "^0.68.15"
-  },
   "dependencies": {
     "rxjs": ">= 6"
   },
@@ -72,6 +68,9 @@
     "rxjs-marbles": "5.0.0",
     "semantic-release": "17.3.9",
     "travis-deploy-once": "5.0.11"
+  },
+  "harmony": {
+    "alias": "react-native-sensors"
   },
   "files": [
     "/RNSensors.podspec",

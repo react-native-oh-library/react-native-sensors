@@ -1,0 +1,11 @@
+{
+  "name": "rnoh-sensors",
+  "version": "1.0.0",
+  devDependencies: {
+    rnoh: 'file:../rnoh',
+  },
+  "main": "Index.ets",
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {}
+}
