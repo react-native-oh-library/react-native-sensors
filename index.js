@@ -48,7 +48,7 @@ function createSensorObservable(sensorType) {
     RTNSensors.isAvailable(SensorType).then((res) => {
       this.isSensorAvailable = true;
       if (!res) {
-        observer.error(`Sensors${sensorType} is not avilable`);
+        observer.error(`Sensors${sensorType} is not available`);
         return;
       } else {
         switch (sensorType) {
