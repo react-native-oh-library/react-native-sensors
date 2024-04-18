@@ -1,5 +1,3 @@
-import React from "react";
-import RTNSensors from "./NativeSensors";
 import { DeviceEventEmitter } from "react-native";
 import { Observable } from "rxjs";
 import { publish, refCount } from "rxjs/operators";
@@ -13,13 +11,13 @@ const listenerKeys = new Map([
   ["orientation", "orientationClick"],
   ["gravity", "gravityClick"],
 ]);
-const SensorType = {
+export const SensorTypes = {
   accelerometer: "accelerometer",
-  gyroscope: "accelerometer",
-  magnetometer: "accelerometer",
-  barometer: "accelerometer",
-  orientation: "accelerometer",
-  gravity: "accelerometer",
+  gyroscope: "gyroscope",
+  magnetometer: "magnetometer",
+  barometer: "barometer",
+  orientation: "orientation",
+  gravity: "gravity",
 };
 
 const eventEmitterSubscription = new Map([
@@ -34,10 +32,6 @@ const eventEmitterSubscription = new Map([
 function createSensorObservable(sensorType) {
   return Observable.create(function subscribe(observer) {
     this.isSensorAvailable = false;
-    if (eventEmitterSubscription.get(sensorType)) {
-      eventEmitterSubscription.get(sensorType).remove();
-      RTNSensors.off(sensorType);
-    }
     this.unsubscribeCallback = () => {
       if (!this.isSensorAvailable) return;
       if (eventEmitterSubscription.get(sensorType)) eventEmitterSubscription.get(sensorType).remove();
@@ -45,7 +39,7 @@ function createSensorObservable(sensorType) {
       RTNSensors.setUpdateInterval(sensorType, 0);
       RTNSensors.setLogLevel(sensorType, 0);
     };
-    RTNSensors.isAvailable(SensorType).then((res) => {
+    RTNSensors.isAvailable(sensorType).then((res) => {
       this.isSensorAvailable = true;
       if (!res) {
         observer.error(`Sensors${sensorType} is not available`);
@@ -81,7 +75,7 @@ function createSensorObservable(sensorType) {
       }
     });
     return this.unsubscribeCallback;
-  }).pipe(makeSingleton);
+  }).pipe(makeSingleton());
 }
 function makeSingleton() {
   return (source) => source.pipe(publish(), refCount());
