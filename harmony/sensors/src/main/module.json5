@@ -3,18 +3,7 @@
     "name": "sensors",
     "type": "har",
     "deviceTypes": [
-      "default"
-    ],
-    "requestPermissions": [
-      {
-        "name": 'ohos.permission.ACCELEROMETER'
-      },
-      {
-        "name": 'ohos.permission.INTERNET'
-      },
-      {
-        "name": 'ohos.permission.GYROSCOPE'
-      }
+      "default",
     ]
   }
 }

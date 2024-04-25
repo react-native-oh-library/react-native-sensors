@@ -12,7 +12,7 @@
     "semantic-release": "semantic-release",
     "travis-deploy-once": "travis-deploy-once"
   },
-  "main": "js/index.js",
+  "main": "src/index.js",
   "types": "src/index.d.ts",
   "repository": "git@github.com:react-native-sensors/react-native-sensors.git",
   "homepage": "https://github.com/react-native-sensors/react-native-sensors",
@@ -70,19 +70,13 @@
     "travis-deploy-once": "5.0.11"
   },
   "harmony": {
-    "alias": "react-native-sensors",
-    "codegenConfig": {
-      "specPaths": [
-        "./js"
-      ]
-    }
+    "alias": "react-native-sensors"
   },
   "files": [
     "/RNSensors.podspec",
     "/src/",
     "/harmony/",
     "/LICENSE",
-    "/README.md",
-    "/js/"
+    "/README.md"
   ]
 }

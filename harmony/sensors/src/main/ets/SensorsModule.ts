@@ -1,10 +1,9 @@
-import { TurboModule, RNOHLogger, TurboModuleContext } from '@rnoh/react-native-openharmony/ts';
-import { TM } from "@rnoh/react-native-openharmony/generated/ts"
+import { TurboModule, RNOHLogger, TurboModuleContext } from "rnoh/ts";
 import sensor from "@ohos.sensor";
 import BusinessError from "@ohos.base";
 
 
-export class SensorsModule extends TurboModule implements TM.RTNSensors.Spec {
+export class SensorsModule extends TurboModule {
   private logger: RNOHLogger;
   private sensorsInterval = new Map<string, number>([
     ["accelerometer", 0],
@@ -257,9 +256,9 @@ export class SensorsModule extends TurboModule implements TM.RTNSensors.Spec {
       return new Promise((resolve) => resolve(!!sensorsTypeDetails?.sensorId))
     } catch (error) {
       let e: BusinessError.BusinessError = error as BusinessError.BusinessError;
-      this.logger.clone(`${SensorType} isAvailable}`)
-        .error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+      this.logger.clone(`${SensorType} isAvailable}`).error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
       return new Promise((resolve) => resolve(false))
     }
   }
+
 }
