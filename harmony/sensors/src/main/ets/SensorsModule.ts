@@ -49,7 +49,7 @@ export class SensorsModule extends TurboModule implements TM.RTNSensors.Spec {
       const logLevel: number = this.sensorsLogLevel.get('accelerometer')!;
       sensor.on(sensor.SensorId.ACCELEROMETER, (data: sensor.AccelerometerResponse) => {
         if (logLevel > 0) {
-          this.logger.clone('accelerometer').info(`accelerometer onCreate ${interval}`)
+          this.logger.clone('accelerometer').info(`accelerometer onCreate`)
         }
         if (logLevel > 1) {
           this.logger.clone('accelerometer').info(`accelerometer onCreate ${JSON.stringify({
@@ -78,7 +78,7 @@ export class SensorsModule extends TurboModule implements TM.RTNSensors.Spec {
       const logLevel: number = this.sensorsLogLevel.get('gyroscope')!;
       sensor.on(sensor.SensorId.GYROSCOPE, (data: sensor.GyroscopeResponse) => {
         if (logLevel > 0) {
-          this.logger.clone('gyroscope').info(`gyroscope onCreate ${interval}`)
+          this.logger.clone('gyroscope').info(`gyroscope onCreate`)
         }
         if (logLevel > 1) {
           this.logger.clone('gyroscope').info(`gyroscope onCreate ${JSON.stringify({
@@ -107,7 +107,7 @@ export class SensorsModule extends TurboModule implements TM.RTNSensors.Spec {
       const logLevel: number = this.sensorsLogLevel.get('magnetometer')!;
       sensor.on(sensor.SensorId.MAGNETIC_FIELD, (data: sensor.MagneticFieldResponse) => {
         if (logLevel > 0) {
-          this.logger.clone('magnetometer').info(`magnetometer onCreate ${interval}`)
+          this.logger.clone('magnetometer').info(`magnetometer onCreate`)
         }
         if (logLevel > 1) {
           this.logger.clone('magnetometer').info(`magnetometer onCreate ${JSON.stringify({
@@ -136,7 +136,7 @@ export class SensorsModule extends TurboModule implements TM.RTNSensors.Spec {
       const logLevel: number = this.sensorsLogLevel.get('barometer')!;
       sensor.on(sensor.SensorId.BAROMETER, (data: sensor.BarometerResponse) => {
         if (logLevel > 0) {
-          this.logger.clone('barometer').info(`barometer onCreate ${interval}`)
+          this.logger.clone('barometer').info(`barometer onCreate`)
         }
         if (logLevel > 1) {
           this.logger.clone('barometer').info(`barometer onCreate ${JSON.stringify({
@@ -159,7 +159,7 @@ export class SensorsModule extends TurboModule implements TM.RTNSensors.Spec {
       const logLevel: number = this.sensorsLogLevel.get('orientation')!;
       sensor.on(sensor.SensorId.ORIENTATION, (data: sensor.OrientationResponse) => {
         if (logLevel > 0) {
-          this.logger.clone('orientation').info(`orientation onCreate ${interval}`)
+          this.logger.clone('orientation').info(`orientation onCreate`)
         }
         if (logLevel > 1) {
           this.logger.clone('orientation').info(`orientation onCreate ${JSON.stringify({
@@ -188,7 +188,7 @@ export class SensorsModule extends TurboModule implements TM.RTNSensors.Spec {
       const logLevel: number = this.sensorsLogLevel.get('gravity')!;
       sensor.on(sensor.SensorId.GRAVITY, (data: sensor.GravityResponse) => {
         if (logLevel > 0) {
-          this.logger.clone('gravity').info(`gravity onCreate ${interval}`)
+          this.logger.clone('gravity').info(`gravity onCreate`)
         }
         if (logLevel > 1) {
           this.logger.clone('gravity').info(`gravity onCreate ${JSON.stringify({
