@@ -1,11 +1,11 @@
-import { TurboModule, RNOHLogger, TurboModuleContext } from '@rnoh/react-native-openharmony/ts';
+import { TurboModule, TurboModuleContext } from '@rnoh/react-native-openharmony/ts';
 import { TM } from "@rnoh/react-native-openharmony/generated/ts"
 import sensor from "@ohos.sensor";
 import BusinessError from "@ohos.base";
+import Logger from "./Logger";
 
 
 export class SensorsModule extends TurboModule implements TM.RTNSensors.Spec {
-  private logger: RNOHLogger;
   private sensorsInterval = new Map<string, number>([
     ["accelerometer", 0],
     ["gyroscope", 0],
@@ -33,7 +33,6 @@ export class SensorsModule extends TurboModule implements TM.RTNSensors.Spec {
 
   constructor(ctx: TurboModuleContext) {
     super(ctx);
-    this.logger = ctx.logger.clone("Sensors");
   }
 
   setLogLevel(sensorsType: string, level: number) {
@@ -49,10 +48,10 @@ export class SensorsModule extends TurboModule implements TM.RTNSensors.Spec {
       const logLevel: number = this.sensorsLogLevel.get('accelerometer')!;
       sensor.on(sensor.SensorId.ACCELEROMETER, (data: sensor.AccelerometerResponse) => {
         if (logLevel > 0) {
-          this.logger.clone('accelerometer').info(`accelerometer onCreate`)
+          Logger.info(`accelerometer onCreate`)
         }
         if (logLevel > 1) {
-          this.logger.clone('accelerometer').info(`accelerometer onCreate ${JSON.stringify({
+          Logger.info(`accelerometer onCreate ${JSON.stringify({
             x: data?.x,
             y: data?.y,
             z: data?.z,
@@ -68,7 +67,7 @@ export class SensorsModule extends TurboModule implements TM.RTNSensors.Spec {
       }, { interval: interval });
     } catch (error) {
       let e: BusinessError.BusinessError = error as BusinessError.BusinessError;
-      this.logger.clone('accelerometer').error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+      Logger.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
     }
   }
 
@@ -78,10 +77,10 @@ export class SensorsModule extends TurboModule implements TM.RTNSensors.Spec {
       const logLevel: number = this.sensorsLogLevel.get('gyroscope')!;
       sensor.on(sensor.SensorId.GYROSCOPE, (data: sensor.GyroscopeResponse) => {
         if (logLevel > 0) {
-          this.logger.clone('gyroscope').info(`gyroscope onCreate`)
+          Logger.info(`gyroscope onCreate`)
         }
         if (logLevel > 1) {
-          this.logger.clone('gyroscope').info(`gyroscope onCreate ${JSON.stringify({
+          Logger.info(`gyroscope onCreate ${JSON.stringify({
             x: data?.x,
             y: data?.y,
             z: data?.z,
@@ -97,7 +96,7 @@ export class SensorsModule extends TurboModule implements TM.RTNSensors.Spec {
       }, { interval: interval });
     } catch (error) {
       let e: BusinessError.BusinessError = error as BusinessError.BusinessError;
-      this.logger.clone('gyroscope').error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+      Logger.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
     }
   }
 
@@ -107,10 +106,10 @@ export class SensorsModule extends TurboModule implements TM.RTNSensors.Spec {
       const logLevel: number = this.sensorsLogLevel.get('magnetometer')!;
       sensor.on(sensor.SensorId.MAGNETIC_FIELD, (data: sensor.MagneticFieldResponse) => {
         if (logLevel > 0) {
-          this.logger.clone('magnetometer').info(`magnetometer onCreate`)
+          Logger.info(`magnetometer onCreate`)
         }
         if (logLevel > 1) {
-          this.logger.clone('magnetometer').info(`magnetometer onCreate ${JSON.stringify({
+          Logger.info(`magnetometer onCreate ${JSON.stringify({
             x: data?.x,
             y: data?.y,
             z: data?.z,
@@ -126,7 +125,7 @@ export class SensorsModule extends TurboModule implements TM.RTNSensors.Spec {
       }, { interval: interval });
     } catch (error) {
       let e: BusinessError.BusinessError = error as BusinessError.BusinessError;
-      this.logger.clone('magnetometer').error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+      Logger.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
     }
   }
 
@@ -136,10 +135,10 @@ export class SensorsModule extends TurboModule implements TM.RTNSensors.Spec {
       const logLevel: number = this.sensorsLogLevel.get('barometer')!;
       sensor.on(sensor.SensorId.BAROMETER, (data: sensor.BarometerResponse) => {
         if (logLevel > 0) {
-          this.logger.clone('barometer').info(`barometer onCreate`)
+          Logger.info(`barometer onCreate`)
         }
         if (logLevel > 1) {
-          this.logger.clone('barometer').info(`barometer onCreate ${JSON.stringify({
+          Logger.info(`barometer onCreate ${JSON.stringify({
             pressure: data?.pressure
           })}`)
         }
@@ -149,7 +148,7 @@ export class SensorsModule extends TurboModule implements TM.RTNSensors.Spec {
       }, { interval: interval });
     } catch (error) {
       let e: BusinessError.BusinessError = error as BusinessError.BusinessError;
-      this.logger.clone('barometer').error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+      Logger.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
     }
   }
 
@@ -159,10 +158,10 @@ export class SensorsModule extends TurboModule implements TM.RTNSensors.Spec {
       const logLevel: number = this.sensorsLogLevel.get('orientation')!;
       sensor.on(sensor.SensorId.ORIENTATION, (data: sensor.OrientationResponse) => {
         if (logLevel > 0) {
-          this.logger.clone('orientation').info(`orientation onCreate`)
+          Logger.info(`orientation onCreate`)
         }
         if (logLevel > 1) {
-          this.logger.clone('orientation').info(`orientation onCreate ${JSON.stringify({
+          Logger.info(`orientation onCreate ${JSON.stringify({
             x: data?.beta,
             y: data?.gamma,
             z: data?.alpha,
@@ -178,7 +177,7 @@ export class SensorsModule extends TurboModule implements TM.RTNSensors.Spec {
       }, { interval: interval });
     } catch (error) {
       let e: BusinessError.BusinessError = error as BusinessError.BusinessError;
-      this.logger.clone('orientation').error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+      Logger.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
     }
   }
 
@@ -188,10 +187,10 @@ export class SensorsModule extends TurboModule implements TM.RTNSensors.Spec {
       const logLevel: number = this.sensorsLogLevel.get('gravity')!;
       sensor.on(sensor.SensorId.GRAVITY, (data: sensor.GravityResponse) => {
         if (logLevel > 0) {
-          this.logger.clone('gravity').info(`gravity onCreate`)
+          Logger.info(`gravity onCreate`)
         }
         if (logLevel > 1) {
-          this.logger.clone('gravity').info(`gravity onCreate ${JSON.stringify({
+          Logger.info(`gravity onCreate ${JSON.stringify({
             x: data?.x,
             y: data?.y,
             z: data?.z,
@@ -207,7 +206,7 @@ export class SensorsModule extends TurboModule implements TM.RTNSensors.Spec {
       }, { interval: interval });
     } catch (error) {
       let e: BusinessError.BusinessError = error as BusinessError.BusinessError;
-      this.logger.clone('gravity').error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+      Logger.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
     }
   }
 
@@ -238,7 +237,7 @@ export class SensorsModule extends TurboModule implements TM.RTNSensors.Spec {
       }
     } catch (error) {
       let e: BusinessError.BusinessError = error as BusinessError.BusinessError;
-      this.logger.clone(`${SensorsType} off}`).error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+      Logger.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
     }
   }
 
@@ -257,7 +256,7 @@ export class SensorsModule extends TurboModule implements TM.RTNSensors.Spec {
       return new Promise((resolve) => resolve(!!sensorsTypeDetails?.sensorId))
     } catch (error) {
       let e: BusinessError.BusinessError = error as BusinessError.BusinessError;
-      this.logger.clone(`${SensorType} isAvailable}`)
+      Logger
         .error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
       return new Promise((resolve) => resolve(false))
     }
